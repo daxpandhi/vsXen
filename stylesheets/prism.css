@@ -191,3 +191,7 @@ pre[class*='language-'][data-language]::before {
 	padding: 0 0.5em;
 	text-shadow: none;
 }
+pre[class*='language-c'][data-language]::before {
+	content: '' !important;
+}
+
