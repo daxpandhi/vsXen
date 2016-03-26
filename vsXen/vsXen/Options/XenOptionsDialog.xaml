@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="vsXen.Options.XenOptionsDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pt="http://propertytools.org/wpf"
+             d:DesignHeight="300"
+             d:DesignWidth="300"
+             mc:Ignorable="d">
+    <DockPanel>
+        <TextBlock DockPanel.Dock="Top" Margin="8">
+            <Run Text="XEN for Visual Studio" FontSize="24" FontWeight="Light" />
+            <LineBreak />
+            <Hyperlink NavigateUri="http://daxpandhi.github.io/vsXen">
+                <Run Text="http://daxpandhi.github.io/vsXen" />
+            </Hyperlink>
+        </TextBlock>
+        <pt:PropertyGrid x:Name="pg"
+                         DescriptionIcon="/vsXen;component/Resources/InfoTooltip_16xMD.png"
+                         EnumAsRadioButtonsLimit="1"
+                         MoveFocusOnEnter="True"
+                         ShowReadOnlyProperties="False"
+                         TabVisibility="VisibleIfMoreThanOne" DockPanel.Dock="Bottom" />
+    </DockPanel>
+</UserControl>
