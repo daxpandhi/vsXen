@@ -879,8 +879,3 @@ footer a:hover {
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
 @media only screen and (max-width: 479px) { }
 
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
-
-body{font-family: "Open Sans"; font-weight: 400;}
-h1,h2,h3,h4,h5,h6{
-  font-family: "Open Sans"; font-weight: 300;}
