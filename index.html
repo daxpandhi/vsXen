@@ -38,13 +38,231 @@
 <h1>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h1>
 
-<p>TODO</p>
+<!-- Usage -->
+<h2 id="basic">Basic Usage</h2>
+<!-- /// -->
+<h3 id="expansion">Expansion</h3>
+<p>
+    Type the <a href="/xen/shortcuts">shortcut</a> or tag name, and press <kbd>TAB</kbd> to invoke Xen.
+</p>
+<div class="code-snippet">
+    <div class="code-preview" data-descr="XEN Code">
+        <pre><code class="language-c">btn</code></pre>
+    </div>
+    <pre data-descr="Generated XAML"><code class="language-markup">
+&lt;Button&gt;&lt;/Button&gt;
+</code></pre>
+</div>
+<!-- /// -->
+
+<h3 id="child">Child <kbd>&gt;</kbd></h3>
+<p>
+    You can nest children using the <code>&gt;</code> symbol.
+</p>
+<div class="code-snippet">
+    <div class="code-preview" data-descr="XEN Code">
+        <pre><code class="language-c">stack>list>li</code></pre>
+    </div>
+    <pre data-descr="Generated XAML"><code class="language-markup line-numbers">
+&lt;StackPanel&gt;
+    &lt;ListBox&gt;
+        &lt;ListBoxItem /&gt;
+    &lt;/ListBox&gt;
+&lt;/StackPanel&gt;
+</code></pre>
+</div>
+<!-- /// -->
+
+<h3 id="sibling">Sibling <kbd>+</kbd></h3>
+<p>
+    You can create siblings by using the <code>+</code> symbol.
+</p>
+<div class="code-snippet">
+    <div class="code-preview" data-descr="XEN Code">
+        <pre><code class="language-c">btn+btn+txb</code></pre>
+    </div>
+    <pre data-descr="Generated XAML"><code class="language-markup line-numbers">
+&lt;Button&gt;&lt;/Button&gt;&lt;Button&gt;&lt;/Button&gt;&lt;TextBlock&gt;&lt;/TextBlock&gt;
+</code></pre>
+</div>
+<!-- /// -->
+<h3 id="multiplication">Multiplication <kbd>*</kbd></h3>
+<p>
+    You can create multiple elements by using the <code>*</code> symbol.
+</p>
+<div class="code-snippet">
+    <div class="code-preview" data-descr="XEN Code">
+        <pre><code class="language-c">btn*3</code></pre>
+    </div>
+    <pre data-descr="Generated XAML"><code class="language-markup line-numbers">
+&lt;Button&gt;&lt;/Button&gt;
+&lt;Button&gt;&lt;/Button&gt;
+&lt;Button&gt;&lt;/Button&gt;
+</code></pre>
+</div>
+<!-- /// -->
+<h3 id="climbup">Climb up <kbd>^</kbd></h3>
+<p>
+    You can climb up in the hierarchy by using the <code>^</code> symbol. <code>^</code> climbs up one level, <code>^^</code> climbs up two levels, and so on.
+</p>
+<div class="code-snippet">
+    <div class="code-preview" data-descr="XEN Code">
+        <pre><code class="language-c">dock>stack^btn</code></pre>
+    </div>
+    <pre data-descr="Generated XAML"><code class="language-markup line-numbers">
+&lt;DockPanel&gt;
+    &lt;StackPanel&gt;
+    &lt;/StackPanel&gt;
+&lt;/DockPanel&gt;
+&lt;Button&gt;&lt;/Button&gt;
+</code></pre>
+</div>
+<!-- /// -->
+<h3 id="numbering">Item Numbering <kbd>$</kbd></h3>
+<p>
+    You can insert incrementing numbers at any point by placing one or more <code>$</code> symbols. This is very useful in conjunction with multiplication.
+</p>
+<div class="code-snippet">
+    <div class="code-preview" data-descr="XEN Code">
+        <pre><code class="language-c">listBox>li#li$$$$*4</code></pre>
+    </div>
+    <pre data-descr="Generated XAML"><code class="language-markup line-numbers">
+&lt;ListBox&gt;
+    &lt;ListBoxItem x:Name=&quot;li0001&quot;&gt;&lt;/ListBoxItem&gt;
+    &lt;ListBoxItem x:Name=&quot;li0002&quot;&gt;&lt;/ListBoxItem&gt;
+    &lt;ListBoxItem x:Name=&quot;li0003&quot;&gt;&lt;/ListBoxItem&gt;
+    &lt;ListBoxItem x:Name=&quot;li0004&quot;&gt;&lt;/ListBoxItem&gt;
+&lt;/ListBox&gt;
+        </code></pre>
+</div>
+<!-- /// -->
+<!-- /// -->
+<!-- /// -->
+<h2 id="xaml">XAML Specific Usage</h2>
+<div class="jumbotron jumbotron-teal">
+    <div class="container">
+        <h1>XAML-ey</h1>
+        <p>Xen is not just a port of ZenCoding/Emmet. We have added XAML specific updates and new functionality.</p>
+    </div>
+</div>
+<!-- /// -->
+<h3 id="elementname">Element Name <kbd>#</kbd></h3>
+<p>
+    You can declare the <samp>x:Name</samp> of an item by using the <code>#</code> suffix followed by the name.
+</p>
+<div class="code-snippet">
+    <div class="code-preview" data-descr="XEN Code">
+        <pre><code class="language-c">button#foo</code></pre>
+    </div>
+    <pre data-descr="Generated XAML"><code class="language-markup line-numbers">
+&lt;Button x:Name=&quot;foo&quot;&gt;&lt;/Button&gt;
+</code></pre>
+</div>
+<!-- /// -->
+<h3 id="style">Style <kbd>.</kbd></h3>
+<p>
+    You can specify the <samp>Style</samp> of a control by using the <code>.</code> suffix followed by the Style <samp>x:Key</samp>.
+</p>
+<div class="code-snippet">
+    <div class="code-preview" data-descr="XEN Code">
+        <pre><code class="language-c">btn.BlueButton</code></pre>
+    </div>
+    <pre data-descr="Generated XAML"><code class="language-markup line-numbers">
+&lt;Button Style=&quot;{DynamicResource BlueButton}&quot; /&gt;
+</code></pre>
+</div>
+
+<!-- /// -->
+<h3 id="attributes">Properties <kbd>[]</kbd></h3>
+<p>
+    Additional properties can specified - in full form. This can useful when multiple items need to have the same attribute set.
+</p>
+<div class="code-snippet">
+    <div class="code-preview" data-descr="XEN Code">
+        <pre><code class="language-c">btn[Background=&quot;#FFCC00&quot;]</code></pre>
+    </div>
+    <pre data-descr="Generated XAML"><code class="language-markup line-numbers">
+&lt;Button Background=&quot;#FFCC00&quot; /&gt;
+</code></pre>
+</div>
+<!-- /// -->
+<!-- /// -->
+<!-- /// -->
+<!-- /// -->
+<h2 id="advanced">Advanced Usage</h2>
+
+<h3 id="example1">Example 1</h3>
+<p>
+
+</p>
+<div class="code-snippet">
+    <div class="code-preview" data-descr="XEN Code">
+        <pre><code class="language-c">dock>stack*2>listBox>li#li$$$$*4</code></pre>
+    </div>
+    <pre data-descr="Generated XAML"><code class="language-markup line-numbers">
+&lt;DockPanel&gt;
+    &lt;StackPanel&gt;
+        &lt;ListBox&gt;
+            &lt;ListBoxItem x:Name=&quot;li0001&quot;&gt;&lt;/ListBoxItem&gt;
+            &lt;ListBoxItem x:Name=&quot;li0002&quot;&gt;&lt;/ListBoxItem&gt;
+            &lt;ListBoxItem x:Name=&quot;li0003&quot;&gt;&lt;/ListBoxItem&gt;
+            &lt;ListBoxItem x:Name=&quot;li0004&quot;&gt;&lt;/ListBoxItem&gt;
+        &lt;/ListBox&gt;
+    &lt;/StackPanel&gt;
+    &lt;StackPanel&gt;
+        &lt;ListBox&gt;
+            &lt;ListBoxItem x:Name=&quot;li0001&quot;&gt;&lt;/ListBoxItem&gt;
+            &lt;ListBoxItem x:Name=&quot;li0002&quot;&gt;&lt;/ListBoxItem&gt;
+            &lt;ListBoxItem x:Name=&quot;li0003&quot;&gt;&lt;/ListBoxItem&gt;
+            &lt;ListBoxItem x:Name=&quot;li0004&quot;&gt;&lt;/ListBoxItem&gt;
+        &lt;/ListBox&gt;
+    &lt;/StackPanel&gt;
+&lt;/DockPanel&gt;
+</code></pre>
+</div>
+<!-- /// -->
+<h3 id="example2">Example 2</h3>
+<p>
+
+</p>
+<div class="code-snippet">
+    <div class="code-preview" data-descr="XEN Code">
+        <pre><code class="language-c">grid>stack#myStack>btn.BlueButton*3^+dock>btn[Background="#FFCC00"]+list>li#item$$*6</code></pre>
+    </div>
+    <pre data-descr="Generated XAML"><code class="language-markup line-numbers">
+&lt;Grid&gt;
+    &lt;StackPanel x:Name=&quot;myStack&quot;&gt;
+        &lt;Button Style=&quot;{DynamicResource BlueButton}&quot;&gt;&lt;/Button&gt;
+        &lt;Button Style=&quot;{DynamicResource BlueButton}&quot;&gt;&lt;/Button&gt;
+        &lt;Button Style=&quot;{DynamicResource BlueButton}&quot;&gt;&lt;/Button&gt;
+    &lt;/StackPanel&gt;
+    &lt;DockPanel&gt;
+        &lt;Button Background=&quot;#FFCC00&quot;&gt;&lt;/Button&gt;
+        &lt;ListBox&gt;
+            &lt;ListBoxItem x:Name=&quot;item01&quot;&gt;&lt;/ListBoxItem&gt;
+            &lt;ListBoxItem x:Name=&quot;item02&quot;&gt;&lt;/ListBoxItem&gt;
+            &lt;ListBoxItem x:Name=&quot;item03&quot;&gt;&lt;/ListBoxItem&gt;
+            &lt;ListBoxItem x:Name=&quot;item04&quot;&gt;&lt;/ListBoxItem&gt;
+            &lt;ListBoxItem x:Name=&quot;item05&quot;&gt;&lt;/ListBoxItem&gt;
+            &lt;ListBoxItem x:Name=&quot;item06&quot;&gt;&lt;/ListBoxItem&gt;
+        &lt;/ListBox&gt;
+    &lt;/DockPanel&gt;
+&lt;/Grid&gt;
+</code></pre>
+</div>
+<!-- /Usage -->
 
 <h1>
 <a id="reference" class="anchor" href="#reference" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Reference</h1>
-
+  <p>
+        Xen case corrects all common Xaml elements. Unlike HTML, XAML has case sensitive tags which can be problematic for Emmet-style coding which is fully lowercase. Xen automatically reformats a known tag to the proper case.
+    </p>
+    <p>
+        Additionally, any unknown tag in the sequence will be expanded as well. For custom expansion, for example, if you want to turn 
+        <samp>mxp</samp> to <samp>myExpandedTag</samp>, you can specify this in the options. (Options <i class="icons8-arrows-long-right"></i> Nukeation Tools <i class="icons8-arrows-long-right"></i> Xen)
+    </p>
 <!-- Reference -->
- <h5>Simplified</h5>
+ <h3>Simplified</h3>
         <p><samp class="text-primary">bd</samp> <i class="icons8-arrows-long-right"></i><code>Border</code></p>
         <p><samp class="text-primary">check</samp> <i class="icons8-arrows-long-right"></i> <code>CheckBox</code></p>
         <p><samp class="text-primary">ci</samp> <i class="icons8-arrows-long-right"></i> <code>ComboBoxItem</code></p>
@@ -71,7 +289,7 @@
         <p><samp class="text-primary">uniform</samp> <i class="icons8-arrows-long-right"></i> <code>UniformPanel</code></p>
         <p><samp class="text-primary">wrap</samp> <i class="icons8-arrows-long-right"></i><code>WrapPanel</code></p>
 
-        <h5>Common Elements</h5>
+        <h3>Common Elements</h3>
         <p><samp>button*</samp> <i class="icons8-arrows-long-right"></i> <code>Button</code></p>
         <p><samp>checkbox*</samp> <i class="icons8-arrows-long-right"></i> <code>CheckBox</code></p>
         <p><samp>combobox*</samp> <i class="icons8-arrows-long-right"></i> <code>ComboBox</code></p>
@@ -87,7 +305,7 @@
         <p><samp>textbox*</samp> <i class="icons8-arrows-long-right"></i><code>TextBox</code></p>
         <p><samp>treeview</samp> <i class="icons8-arrows-long-right"></i><code>TreeView</code></p>
 
-        <h5>Containers</h5>
+        <h3>Containers</h3>
         <p><samp>canvas</samp> <i class="icons8-arrows-long-right"></i> <code>Canvas</code></p>
         <p><samp>relativepanel*</samp> <i class="icons8-arrows-long-right"></i> <code>RelativePanel</code></p>
         <p><samp>scrollviewer*</samp> <i class="icons8-arrows-long-right"></i> <code>ScrollViewer</code></p>
@@ -102,7 +320,7 @@
         <p><samp>groupbox*</samp> <i class="icons8-arrows-long-right"></i> <code>GroupBox</code></p>
         <p><samp>stackpanel*</samp> <i class="icons8-arrows-long-right"></i> <code>StackPanel</code></p>
 
-        <h5>Other Elements</h5>
+        <h3>Other Elements</h3>
         <p><samp>calendar</samp> <i class="icons8-arrows-long-right"></i> <code>Calendar</code></p>
         <p><samp>contentcontrol</samp> <i class="icons8-arrows-long-right"></i> <code>ContentControl</code></p>
         <p><samp>datagrid</samp> <i class="icons8-arrows-long-right"></i> <code>DataGrid</code></p>
@@ -124,13 +342,13 @@
         <p><samp>webbrowser</samp> <i class="icons8-arrows-long-right"></i> <code>WebBrowser</code></p>
         <p><samp>windowsformshost</samp> <i class="icons8-arrows-long-right"></i> <code>WindowsFormsHost</code></p>
     
-        <h5>Children</h5>
+        <h3>Children</h3>
         <p><samp>comboboxitem</samp> <i class="icons8-arrows-long-right"></i> <code>ComboBoxItem</code></p>
         <p><samp>listboxitem</samp> <i class="icons8-arrows-long-right"></i> <code>ListBoxItem</code></p>
         <p><samp>menuitem</samp> <i class="icons8-arrows-long-right"></i> <code>MenuItem</code></p>
         <p><samp>treeviewitem</samp> <i class="icons8-arrows-long-right"></i> <code>TreeViewItem</code></p>
     
-        <h5>Resource</h5>
+        <h3>Resource</h3>
         <p><samp>ct</samp> <i class="icons8-arrows-long-right"></i> <code>ControlTemplate</code></p>
         <p><samp>set</samp> <i class="icons8-arrows-long-right"></i> <code>Setter</code></p>
         <p><samp>setter</samp> <i class="icons8-arrows-long-right"></i> <code>Setter</code></p>
